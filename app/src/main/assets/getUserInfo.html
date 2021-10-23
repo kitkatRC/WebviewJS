@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title>三方SDK调用</title>
+  <meta name="format-detection" content="telephone=no,email=no">
+  <meta name="viewport"
+    content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+  <style type="text/css">
+    * {
+      -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+      -webkit-touch-callout: none;
+      -webkit-user-select: none;
+      outline: none;
+      word-break: break-all;
+      box-sizing: border-box;
+      -webkit-box-sizing: border-box;
+    }
+
+    body,
+    div,
+    p,
+    section,
+    ul {
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      font-size: 50px;
+      width: 100%;
+      border: none
+    }
+
+    section {
+      display: block;
+    }
+
+    img {
+      border: 0;
+    }
+
+    body {
+      font-size: 0.28rem;
+      font-family: Arial, "Microsoft Yahei";
+      -webkit-text-size-adjust: none;
+      overflow-x: hidden;
+      background: #f3f3f3;
+    }
+
+    .dn {
+      display: none;
+    }
+
+    ul,
+    ol,
+    li {
+      list-style: none;
+    }
+
+    .no-wifi .content,
+    .no-wifi .title {
+      text-align: center;
+      font-size: 0.26rem;
+      color: #666;
+    }
+
+    .no-wifi .content {
+      padding-bottom: 0.5rem;
+    }
+
+    .no-wifi .title {
+      margin-bottom: 0.2rem;
+      font-size: 0.3rem;
+      color: #333;
+    }
+
+    .no-wifi img {
+      width: 1.5rem;
+      display: block;
+      margin: 1.8rem auto 0.4rem auto;
+    }
+
+    .no-wifi .btn-warp {
+      padding: 0 0.24rem;
+      margin-top: 0.5rem;
+      text-align: center;
+    }
+
+    .no-wifi .btn {
+      width: 5.7rem;
+      display: block;
+      padding: 0.22rem 0;
+      margin: 0 auto;
+      color: #999;
+      /*border:1px solid #999;*/
+      -moz-border-radius: 6px;
+      -webkit-border-radius: 6px;
+      border-radius: 6px;
+      background: #f36d42;
+      background: -webkit-linear-gradient(90deg, #f36d42, #fb4035);
+      background: -o-linear-gradient(90deg, #f36d42, #fb4035);
+      background: -moz-linear-gradient(90deg, #f36d42, #fb4035);
+      background: linear-gradient(90deg, #f36d42, #fb4035);
+      color: #fff;
+      font-size: 0.32rem;
+    }
+  </style>
+  <script type="text/javascript">
+    window.XCZX.onListenEvent("applicationEnterForeground", function (data) {
+      console.log('applicationEnterForeground');
+    });
+
+    window.XCZX.onListenEvent("applicationEnterBackground", function (data) {
+      console.log('applicationEnterBackground');
+
+    });
+    function getToken() {
+
+      window.XCZX.getUserInfo(function (data) {
+        console.log(data);
+        document.getElementById("contenttoken").innerHTML= JSON.stringify(data);
+      });
+    };
+	
+  </script>
+</head>
+
+<body class="no-wifi">
+  <div>
+    <section class="">
+      <div id="input1"><span class="inp1">请输入要传递的值:</span><input type="text" id="input"></div>
+      <div class="btn-warp"><span class="btn" onclick="getToken()">JS获取用户信息</span></div>
+      <div class="btn-warp" ><span class="no-wifi content" id="contenttoken">token信息</span></div>
+    </section>
+  </div>
+
+  <script type="text/javascript">
+  </script>
+</body>
+
+</html>

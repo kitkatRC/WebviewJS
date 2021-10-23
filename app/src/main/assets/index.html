@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>WebView</title>
+    <style type="text/css">
+body {
+    background: #cbcc1a;
+}
+
+.btn {
+    line-height: 40px;
+    margin: 10px;
+    background: #cccccc;
+    font-size:40px;
+    padding:10px;
+}
+.btn2 {
+    margin: 10px;
+    background: #cccccc;
+    font-size:40px;
+    padding:10px;
+}
+
+.logo {
+    height: 100px;
+    background: aqua;
+}
+.inp1{
+margin:10px
+}
+
+    </style>
+</head>
+<body>
+<h2>WebView</h2>
+
+<div id="input1" class="inp1"><span >请输入要传递的值:</span><input type="text" id="input"></div>
+<div id="btn" class="btn"><span >点我</span></div>
+<div id="btn2" class="btn2"><span >点我显示</span></div>
+<div id="content"></div>
+<div class="logo"></div>
+<script type="text/javascript">
+var btnEle = document.getElementById("btn")
+var btnEle2 = document.getElementById("btn2")
+var inputEle = document.getElementById("input")
+btnEle.addEventListener("click", function () {
+    var value = inputEle.value
+    // alert(value)
+    /*调用java代码*/
+    if (window.zyJsLuncher != null) {
+        window.zyJsLuncher.setValue(value);
+    }
+
+    window.XCZX.getUserInfo(function (data) {
+        console.log("getUserInfo22:"+data);
+        document.getElementById("content").innerHTML= JSON.stringify(data);
+      });
+    console.log("window.index:"+window.index)
+    window.index.sayHi();
+})
+
+btnEle2.addEventListener("click",function(){
+    callAndroid.getData("点点点--Android 快显示:"+window.index)
+})
+</script>
+<!--    callAndroid.getData("点点点&#45;&#45;Android 快显示"+window.index)-->
+</body>
+</html>
